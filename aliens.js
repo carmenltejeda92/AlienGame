@@ -28,22 +28,31 @@ class Alien{
     }
 }
 
-
+let humanShips = 6
+let humanArr =[]
 const human1 = new Assembly('Carmen')
-const human2 = new Assembly('Lucy')
-const human3 = new Assembly('Cassidy')
-const human4 = new Assembly('Andre')
-const humans = [human1, human2, human3, human4]
-let humanShips = 4
-// console.log(human1)
+function createHuman(){
+    for(let i=0; i<=humanShips; i++){
+        let human = new Assembly()
+        humanArr.push(human)
+    }
 
+    return humanArr
+}
+
+
+let alienShips = 6
+let alienArr =[]
 const alien1 = new Alien('Gorg')
-const alien2 = new Alien('Borg')
-const alien3 = new Alien('Smorg')
-const alien4 = new Alien('Creek')
-const aliens = [alien1, alien2, alien3, alien4]
-let alienShips = 4
-// console.log(alien1)
+function createAlien(){
+    for(let i=0; i<=alienShips; i++){
+        let alien = new Alien()
+        alienArr.push(alien)
+    }
+
+    return alienArr
+}
+
 
 
 // who gets to shoot first
@@ -72,15 +81,28 @@ function randomNum(){
     return rando
 }
 
+let arrIndex = 0
+
 const button = document.querySelector('#shoot')
 body.appendChild(button)
 button.addEventListener('click', (event) =>{
-    if(randomNum() == human1.accuracy){
+    let currentAlien = alienArr[arrIndex]
+
+    if(randomNum() <= human1.accuracy){
         alien1.hull -=5
         console.log('direct hit! ' + alien1.hull)
+        if(alien1.hull <= 0){
+            createAlien()
+            arrIndex +=1
+    //     imgDiv.remove()
+        }
+        if(arrIndex === 5){
+            console.log('Humans win!!')
+            return
+        }
     }else if(randomNum() !== human1.accuracy){
         console.log('We missed, aliens turn')
-        if(randomNum() == alien1.accuracy){
+        if(randomNum() <= alien1.accuracy){
             human1.hull -= alien1.firepower
             console.log(human1.hull)
         }else if(randomNum() !== alien1.accuracy){
@@ -88,9 +110,7 @@ button.addEventListener('click', (event) =>{
         }
     }
 
-        //     imgDiv.remove()
 })
-
 
 
 
