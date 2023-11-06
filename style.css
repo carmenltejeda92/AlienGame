@@ -1,0 +1,51 @@
+body{
+    background-image: url("https://hips.hearstapps.com/hmg-prod/images/panorama-milky-way-galaxy-with-stars-and-space-dust-royalty-free-image-1623176828.jpg?crop=0.99995xw:1xh;center,top&resize=1200:*");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.background{
+    max-width: 100%;
+    height: auto;
+}
+
+
+.assembly{
+    height: 100px;
+    width: 100px;
+}
+
+.alien{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.them{
+    display: flex;
+    flex-direction: column;
+}
+
+.us{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#shoot{
+   height: fit-content;
+   align-self: center;
+}
+
+#board{
+    display:flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
